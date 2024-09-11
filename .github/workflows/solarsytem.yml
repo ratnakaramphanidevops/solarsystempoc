@@ -18,8 +18,16 @@ jobs:
         - name: Setup NodeJS Version
           uses: actions/setup-node@v3
           with:
-            node-version: 18
-        - name: Install dependencis
-          run:  npm install
-        - name: Unit testing
-          run: npm test 
+            node-version: 20
+    
+        - name: Install Dependencies
+          run: npm install
+    
+        - name: Unit Testing
+          run: npm test
+          
+        - name: Archive Test Result
+          uses: actions/upload-artifact@v3
+          with:
+            name: Mocha-Test-Result
+            path: test-results.xml
